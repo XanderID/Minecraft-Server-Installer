@@ -17,7 +17,7 @@ An Unofficial Minecraft Server Software Installer!
 
 ## Using the installation scripts
 
-To use the installation scripts, simply run this command as root. The script will ask you whether you would like to install just the panel, just Wings or both.
+Just copy and Paste to Command Line!
 
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/MulqiGaming64/Minecraft-Server-Installer/main/installer.sh)
