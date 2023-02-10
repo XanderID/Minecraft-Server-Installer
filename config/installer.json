@@ -1,0 +1,14 @@
+{
+	"Proxy": [
+		{
+			"name":" WaterdogPE ( Bedrock )",
+			"url": "https://raw.githubusercontent.com/MulqiGaming64/Minecraft-Server-Installer/main/installer/bedrock/WaterdogPE/installer.sh"
+		}
+	],
+	"Server":[
+		{
+			"name": "PocketMine-MP ( Bedrock )",
+			"url": "https://raw.githubusercontent.com/MulqiGaming64/Minecraft-Server-Installer/main/installer/bedrock/PocketMine-MP/installer.sh"
+		}
+	]
+}
