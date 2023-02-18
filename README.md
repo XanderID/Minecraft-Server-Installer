@@ -20,7 +20,7 @@ An Unofficial Minecraft Server Software Installer!
 Just copy and Paste to Command Line!
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/MulqiGaming64/Minecraft-Server-Installer/main/installer.sh)
+bash <(curl -s https://raw.githubusercontent.com/XanderID/Minecraft-Server-Installer/main/installer.sh)
 ```
 
 ## Available Installer
