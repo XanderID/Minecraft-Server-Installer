@@ -13,24 +13,15 @@ fi
 
 echo -e "Jq Installed";
 
-# Zip
-echo -e "Checking Package Zip";
-if ! command -v zip &> /dev/null
+# Tar
+echo -e "Checking Package Tar";
+if ! command -v tar &> /dev/null
 then
-    echo -e "Please Install Package Zip";
+    echo -e "Please Install Package Tar";
 	exit 0;
 fi
 
-echo -e "Zip Installed";
-
-echo -e "Checking Package Unzip";
-if ! command -v unzip &> /dev/null
-then
-  echo -e "Please Install Package Unzip";
-  exit 0;
-fi
-
-echo -e "Unzip Installed";
+echo -e "Tar Installed";
 
 echo -e "Checking Package Curl";
 if ! command -v curl &> /dev/null
@@ -46,18 +37,6 @@ echo -e "\nInput Path Name [pmmp]: \c";
 read pathInstall
 pathInstall=${pathInstall:-pmmp}
 
-# Get for PocketMine-MP Install
-echo -e "\nInput PocketMine-MP Version [pm3, pm4, pm5]: \c";
-read pmInstall
-pmInstall=${pmInstall:-pm4}
-
-# Check if PocketMine-MP Version Available
-if ! [ "$pmInstall" == "pm3" ] && ! [ "$pmInstall" == "pm4" ] && ! [ "$pmInstall" == "pm5" ]
-then
-        echo -e "\nAvailable PocketMine-MP Version is pm3, pm4, pm5!";
-        exit 0;
-fi
-
 # Get Bind Port Server
 echo -e "\nInput PocketMine-MP Bind Port [19132]: \c";
 read bindPort
@@ -71,9 +50,9 @@ fi
 
 
 # Get PocketMine-MP.phar and start.sh Link
-installver=$(echo $pmInstall | sed -e "s/pm//g")
+installver=$(echo "pm5" | sed -e "s/pm//g")
 echo -e "\nGetting Newest PocketMine-MP Version $installver Url!";
-installVersion=4.13.0 # Default If Version is doesn't Found
+installVersion=5.15.0 # Default If Version is doesn't Found
 
 allVersion=$(curl -s https://api.github.com/repos/pmmp/PocketMine-MP/git/refs/tags)
 count_version=$(echo $allVersion | jq 'keys | length')
@@ -104,13 +83,13 @@ echo -e "\nStart Installing PocketMine-MP '$installVersion' on Path $pathInstall
 # Download
 curl -L -s -o PocketMine-MP.phar https://github.com/pmmp/PocketMine-MP/releases/download/$installVersion/PocketMine-MP.phar
 curl -L -s -o start.sh https://github.com/pmmp/PocketMine-MP/releases/download/$installVersion/start.sh
-curl -L -s -o linux-x86_64-bin.zip https://github.com/MulqiGaming64/php-build-scripts_fork/releases/download/1.0.0/linux-x86_64-bin.zip
+curl -L -s -o PHP-Linux-x86_64-PM5.tar.gz https://github.com/pmmp/PHP-Binaries/releases/download/php-8.3-latest/PHP-Linux-x86_64-PM5.tar.gz
 
 # Bin Folder
-unzip -qq linux-x86_64-bin.zip
+tar -xvzf PHP-Linux-x86_64-PM5.tar.gz
 EXTENSION_DIR=$(find "$(pwd)/bin" -name "*debug-zts*")
 grep -q '^extension_dir' bin/php7/bin/php.ini && sed -i'bak' "s{^extension_dir=.*{extension_dir=\"$EXTENSION_DIR\"{" bin/php7/bin/php.ini || echo "extension_dir=\"$EXTENSION_DIR\"" >> bin/php7/bin/php.ini
-rm -rf linux-x86_64-bin.zip
+rm -rf PHP-Linux-x86_64-PM5.tar.gz
 
 # Install
 mkdir crashdumps
