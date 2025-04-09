@@ -2,13 +2,17 @@
 	"Proxy": [
 		{
 			"name":" WaterdogPE ( Bedrock )",
-			"url": "https://raw.githubusercontent.com/MulqiGaming64/Minecraft-Server-Installer/main/installer/bedrock/WaterdogPE/installer.sh"
+			"url": "https://raw.githubusercontent.com/XanderID/Minecraft-Server-Installer/main/installer/bedrock/WaterdogPE/installer.sh"
 		}
 	],
 	"Server":[
 		{
 			"name": "PocketMine-MP ( Bedrock )",
-			"url": "https://raw.githubusercontent.com/MulqiGaming64/Minecraft-Server-Installer/main/installer/bedrock/PocketMine-MP/installer.sh"
+			"url": "https://raw.githubusercontent.com/XanderID/Minecraft-Server-Installer/main/installer/bedrock/PocketMine-MP/installer.sh"
+		},
+		{
+			"name": "PocketMine-MP NetherGames ( Bedrock )",
+			"url": "https://raw.githubusercontent.com/XanderID/Minecraft-Server-Installer/main/installer/bedrock/PocketMine-MPNG/installer.sh"
 		}
 	]
 }

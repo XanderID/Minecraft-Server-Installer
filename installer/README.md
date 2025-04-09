@@ -1,8 +1,13 @@
+
 # Available Installer
+
 Below are the available installers
 
 ## Bedrock
+
 - Proxy
-	- WaterdogPE
+  - WaterdogPE
 - Server
-	- PocketMine-MP
+  - PocketMine-MP
+  - PocketMine-MP NetherGames
+  

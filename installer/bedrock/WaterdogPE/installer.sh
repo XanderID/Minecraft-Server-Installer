@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Function to Check Number
 checkNumber(){
 	if ! [[ "$1" =~ ^[0-9]+$ ]]
 	then
@@ -9,10 +8,8 @@ checkNumber(){
 	fi
 }
 
-# Check All Installed Package
 echo -e "Checking all Required Package";
 
-# Jq
 echo -e "Checking Package Jq";
 if ! command -v jq &> /dev/null
 then
@@ -50,7 +47,6 @@ fi
 
 echo -e "Your java version Have the requirements criteria!"
 
-# Get for Path Installing
 echo -e "\nInput Path Name [waterdogpe]: \c";
 read pathInstall
 pathInstall=${pathInstall:-waterdogpe}
@@ -63,29 +59,23 @@ fi
 
 cd ./$pathInstall/
 
-# Getting all Download url and Version
 waterdogUrl=$(curl -s https://api.github.com/repos/WaterdogPE/WaterdogPE/releases/latest | jq '.assets[0].browser_download_url' | sed 's/\"//g')
 waterdogVersion=$(curl -s https://api.github.com/repos/WaterdogPE/WaterdogPE/releases/latest | jq '.tag_name' | sed 's/\"//g')
 
 echo -e "\nStart Installing WaterdogPE '$waterdogVersion' on Path $pathInstall"
 
-# Download
 curl -L -s -o Waterdog.jar $waterdogUrl
 curl -L -s -o lang.ini https://raw.githubusercontent.com/WaterdogPE/WaterdogPE/master/src/main/resources/lang.ini
 
-# Install
 mkdir logs
 mkdir plugins
 mkdir packs
 
-# Create File
 echo "#!/bin/bash
 java -Xms512M -Xmx4G -jar Waterdog.jar" >> "start.sh"
 
-# Settings
 chmod +x "start.sh"
 
-# Config Creator
 echo -e "\nWaterdogPE is already installed, do you want to make automatic configuration? [y/n]: \c";
 read choice
 

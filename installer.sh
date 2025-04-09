@@ -1,10 +1,8 @@
 #!/bin/bash
 
-# Check All Installed Package
 echo -e "Checking all Required Package";
 sleep 1
 
-# Jq
 echo -e "Checking Package Jq";
 sleep 1
 if ! command -v jq &> /dev/null
@@ -16,14 +14,13 @@ fi
 echo -e "Jq Installed";
 sleep 1
 
-installer_json=$(curl -s https://raw.githubusercontent.com/MulqiGaming64/Minecraft-Server-Installer/main/config/installer.json)
+installer_json=$(curl -s https://raw.githubusercontent.com/XanderID/Minecraft-Server-Installer/main/config/installer.json)
 
 categories=$(echo $installer_json | jq -r 'keys[]')
 message=""
 all_index=0
 for categories in $categories
 do
-	# Getting all Software
 	software_count=$(echo $installer_json | jq ".$categories | length")
 	message+="$categories:"
 	for ((i=0; i<$software_count; i++))
